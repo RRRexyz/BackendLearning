@@ -1,6 +1,6 @@
 # 1 安装Python
 
-打开Python**官方**网站 [www.python.org](www.python.org)
+打开Python**官方**网站 [www.python.org](https://www.python.org)
 
 *国内访问可能有点卡，如果实在进不去可以挂梯子*
 

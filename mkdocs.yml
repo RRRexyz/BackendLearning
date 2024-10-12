@@ -1,2 +1,5 @@
-site_name: My Docs
+site_name: Backend Learning
 theme: minty
+nav:
+  - Home: index.md
+  - Python: python.md

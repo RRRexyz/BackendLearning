@@ -2,5 +2,5 @@ site_name: Backend Learning
 site_url: "https://rrrexyz.github.io/BackendLearning/"
 theme: minty
 nav:
-  - Home: index.md
-  - Python: python.md
+  - 主页: index.md
+  - Python开发环境搭建: python.md

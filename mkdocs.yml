@@ -3,4 +3,6 @@ site_url: "https://rrrexyz.github.io/BackendLearning/"
 theme: minty
 nav:
   - Home: index.md
+  - Git: git.md
   - Python: python.md
+  - Ladder: ladder.md

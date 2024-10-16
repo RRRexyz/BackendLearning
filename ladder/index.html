@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://rrrexyz.github.io/BackendLearning/python/">
+        <link rel="canonical" href="https://rrrexyz.github.io/BackendLearning/ladder/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Python - Backend Learning</title>
+        <title>Ladder - Backend Learning</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -41,10 +41,10 @@
                                 <a href="../git/" class="nav-link">Git</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./" class="nav-link active" aria-current="page">Python</a>
+                                <a href="../python/" class="nav-link">Python</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../ladder/" class="nav-link">Ladder</a>
+                                <a href="./" class="nav-link active" aria-current="page">Ladder</a>
                             </li>
                         </ul>
 
@@ -55,12 +55,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../git/" class="nav-link">
+                                <a rel="prev" href="../python/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../ladder/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -82,13 +82,21 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#1-python" class="nav-link">1 安装Python</a>
+            <li class="nav-item" data-bs-level="1"><a href="#_1" class="nav-link">关于翻墙</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="1"><a href="#2-vscode" class="nav-link">2 配置Vscode开发环境</a>
+            <li class="nav-item" data-bs-level="1"><a href="#_2" class="nav-link">翻墙的方法</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#_3" class="nav-link">加速器</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#vpn" class="nav-link">VPN（俗称梯子）</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -96,57 +104,25 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="1-python">1 安装Python</h1>
-<p>打开Python<strong>官方</strong>网站 <a href="https://www.python.org">www.python.org</a></p>
-<p><em>国内访问可能有点卡，如果实在进不去可以挂梯子</em></p>
-<p><img alt="alt text" src="../image-1.png" /></p>
-<p>点击 <code>Downloads</code></p>
-<p><img alt="alt text" src="../image-2.png" /></p>
-<p>可以看到Python 在前不久刚刚推出了3.13版本。一般来说，比较新的版本在初期都会有一些bug需要修复，并且对于某些库的支持也可能存在问题（别问我怎么知道的😡）。因此在实际生产时不建议使用最新版本。从下图可以看到目前3.13和3.12版本还处于 <code>bugfix</code> 状态。而更早的版本已经 <code>security</code> 了。对于未安装Python的同学来说现在推荐安装3.11和3.12版本。如果你已经安装了较早的Python 版本（3.9/3.8或者更早的），那么是时候该更新了！3.10以后的版本中加入了一些利于Web后端开发的内容😍。</p>
-<p><img alt="alt text" src="../image-3.png" /></p>
-<p>假如我们要安装3.12版本，点击这里的 Python 3.12.7 进入详情页。</p>
-<p><img alt="alt text" src="../image-14.png" /></p>
-<p>然后翻到最底部，选择大家电脑操作系统所对应版本的安装包进行下载。</p>
-<p><img alt="alt text" src="../image-15.png" /></p>
-<p>如果你不知道自己电脑的Windows 系统是64位还是32位的，可以<strong>右键</strong>单击桌面上的<strong>此电脑</strong>然后在菜单中选择<strong>属性</strong>进行查看。（大部分电脑应该都是64位系统）</p>
-<p><img alt="alt text" src="../image-5.png" /></p>
-<p>打开下载好的exe文件，把下面的两个复选框都勾上（如果能勾的话就勾上，不能勾说明你已经有相关组件，就不用管了）。在弹出的窗口中点击 <code>Customize installation</code>。</p>
-<p><img alt="alt text" src="../1.png" /></p>
-<p>Optional Features不用改动（如果py launcher能勾选的也勾上），直接点击 <code>Next</code>。</p>
-<p><img alt="alt text" src="../2.png" /></p>
-<p>Advanced Options必须勾选下图框出来的四个选项（不能勾的也别管了），其余选项随意，想勾也可以勾。最下方自定义一个安装路径，如果你的电脑进行了磁盘分区的建议不要装在C盘。</p>
-<p><img alt="alt text" src="../3.png" /></p>
-<p>现在点击Install就可以把Python 安装到你的电脑上并自动配置好环境变量了！安装完毕后关闭程序即可。</p>
-<p><img alt="alt text" src="../4.png" /></p>
-<p>然后你就可以在开始菜单中找到大蟒蛇了！</p>
-<p><img alt="alt text" src="../image-4.png" /></p>
-<h1 id="2-vscode">2 配置Vscode开发环境</h1>
-<p>众所周知，要想在VSCode 中进行高效的软件开发，离不开插件的帮助。对于Python 开发而言，我们可以安装以下这些插件：</p>
-<ul>
-<li>Python</li>
-<li>Pylance</li>
-<li>Python Debugger</li>
-<li>Python Extension Pack</li>
-<li>Python Indent</li>
-<li>Jupyter</li>
-</ul>
-<p>现在让我们新建一个文件夹Test 然后用VSCode 打开它。在里面新建一个文件，命名为 <code>demo.py</code>。当你创建一个后缀名为py的文件时，系统就会知道这是一个Python源文件，我们就可以用解释器来执行它。</p>
-<p>在文件中输入</p>
-<pre><code>print(666)
-</code></pre>
-<p>接着点击界面右下角的<strong>选择解释器</strong>（如果你已经选择过的话，这个位置就会显示Python解释器的版本）。此时正上方会弹出一个小窗口，一般来说会自动识别到你Python 安装的位置（如下图所示），直接点击路径即可。如果没有识别到的话，也可以点击输入解释器路径手动输入，路径为你安装Python所在的文件夹中的 <code>python.exe</code> 文件。</p>
-<p><img alt="alt text" src="../image.png" /></p>
-<p>选择完成后就可以点击右上角的三角形按钮运行程序了。在下方的终端中可以看到程序打印出来的内容。</p>
-<p><img alt="alt text" src="../image-11.png" /></p>
-<p>在顶部导航栏选择<strong>文件-首选项-键盘快捷方式</strong>，在搜索框搜索运行Python。然后双击下图中红框区域进行快捷键的绑定。（我绑定的为 <code>F5</code>）</p>
-<p><img alt="alt text" src="../image-13.png" /></p>
-<p>接着我们再新建一个文件命名为 <code>jupyter.ipynb</code>，双击打开，我们就可以开始使用Jupyter Notebook 进行交互式编程了。点击右上角的选择内核来选择Python解释器。</p>
-<p><img alt="alt text" src="../image-16.png" /></p>
-<p>然后添加一个代码单元格，输入一些代码并运行（快捷键貌似是 <code>Ctrl+Enter</code>）。</p>
-<p><img alt="alt text" src="../image-17.png" /></p>
-<p>正常来说，如果你是第一次运行jupyter文件的话，大概率会弹出来一个这样的窗口。</p>
-<p><img alt="alt text" src="../image-18.png" /></p>
-<p>这是因为在jupyter文件中运行Python程序需要ipykernel这个包，点击安装即可，可以说是非常人性化了！</p></div>
+<h1 id="_1">关于翻墙</h1>
+<p>“墙”指的是我国的“国家公共网络监控系统”-GFW，俗称中国国家防火墙。“墙”的存在对于广大网友而言，最直接的感受就是：有一些网站我们“上不去”。而“翻墙”，通常指的是通过各种技术手段绕过国家的互联网审查和封锁，访问被封锁的网站、应用或内容。</p>
+<p><em>请注意，“翻墙”违法！只要使用了“翻墙”软件，不管目的是什么，学英语也好，查资料也罢，甚至什么都没有浏览，都属于违法行为。</em></p>
+<p>不过话是这么说，但是只要我们注意分寸，不去墙外搞什么大动作的话，正常来说是不会有人找我们麻烦的。</p>
+<h1 id="_2">翻墙的方法</h1>
+<h2 id="_3">加速器</h2>
+<p>网络加速器是一种专门优化网络连接的软件，通过各种技术手段，提高用户的网络传输效率，降低延迟。尤其对于某些对网络质量要求较高的在线游戏来说，网络加速器可以有效减少丢包现象和延迟，从而提升游戏体验。用户在使用网络加速器后，可以享受到更加流畅的游戏过程，特别是在与其他玩家对战时，反应速度至关重要。因此可以看出加速器的特点是针对特定的网络服务提供高质量的网络连接，尤其体现在连接的稳定性上，因此常用在游戏加速场景。其缺点是可供加速的服务范围有限。</p>
+<p>这里推荐一款<strong>免费</strong>的加速器——<a href="https://steampp.net/">Steam++</a>。是的，你没有看错，它确实叫这个名字。</p>
+<p><img alt="alt text" src="../image-24.png" /></p>
+<p>下载安装完成后打开软件，左侧导航栏选择网络加速，勾选GitHub选项，然后点击一键加速即可！</p>
+<h2 id="vpn">VPN（俗称梯子）</h2>
+<p>‌梯子‌，通常指的是‌VPN（虚拟私人网络）服务，其主要目的是绕过地理限制，访问被屏蔽的内容。梯子的优点是允许用户访问全球互联网内容，无论是视频、社交媒体还是其他服务，而不受地理位置的限制。梯子更侧重于提供广泛的网络访问能力，而不是优化特定的网络连接，所以其缺点就是提供的网络连接不像加速器那般稳定，可能会产生卡顿，但是鉴于我们一般使用梯子来浏览网页、视频或其他一些非即时服务，因此偶尔的卡顿并不会产生严重影响。</p>
+<p>这里推荐大家在<a href="https://mojie.kim">魔戒</a>上购买VPN服务。</p>
+<p>可以记一下这个网址：<a href="https://mojie.kim">https://mojie.kim</a> 或者是 <a href="https://魔戒.net">魔戒.net</a></p>
+<p>注册账号登录后，点击左侧的购买订阅购买套餐，可以先花1块钱买个2G流量玩玩，或者手头阔绰的话直接花14.9块钱买个130G流量实现翻墙自由。注意所有套餐的流量都是不限时的，可以用到天荒地老。</p>
+<p><img alt="alt text" src="../image-25.png" /></p>
+<p>买完套餐以后点击左侧的使用文档，找到教程，然后按照教程操作就可以了。有什么问题可以去问网页右下角那个客服。</p>
+<p><img alt="alt text" src="../image-26.png" /></p>
+<p><strong>注意</strong>：开启软件后，打开系统代理就是挂上梯子，关闭系统代理就是关掉梯子。当然直接退出软件也可以关掉梯子。</p></div>
             </div>
         </div>
 

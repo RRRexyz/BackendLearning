@@ -3,6 +3,10 @@ site_url: "https://rrrexyz.github.io/BackendLearning/"
 theme: minty
 nav:
   - Home: index.md
-  - Git: git.md
-  - Python: python.md
-  - Ladder: ladder.md
+  - Git:
+    - Git安装: git.md
+    - Git入门: git2.md
+  - 后端开发: 
+    - Python配置: python.md
+  - 懂的都懂:
+    - 科学上网: ladder.md

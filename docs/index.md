@@ -2,6 +2,7 @@
 
 ## Git入门
 1. [Git安装与配置](git.md)
+2. [Git的功能和基本操作](git2.md)
 
 ## 后端开发
 1. [Python开发环境搭建](python.md)

@@ -52,6 +52,14 @@
 
 不会膜法的同学可以去学习一下：[科学上网教程](ladder.md)
 
+打开[GitHub官网](https://github.com/)点击右上角**Sign up**进行账户注册，然后按照提示一步步操作即可。
+
+注册完登录账号后还有一件事情要做，就是启用Two-factor authentication（2FA）双重身份验证。参考下面这篇文章：
+
+[如何启用GitHub双重身份验证](https://blog.csdn.net/KRISNAT/article/details/140762848)
+
+以后登录时再遇到2FA验证，你都需要打开手机上的Authenticator查看动态更新的6位验证码。
+
 # 3 开始学习Git
 
 好了，你已经成功配置好了Git环境，现在可以[开始学Git](git2.md)

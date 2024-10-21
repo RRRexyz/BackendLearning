@@ -92,7 +92,7 @@ git push -u origin main
 
 4. `git commit -m "first commit"`：将暂存区的改动提交到本地仓库，提交说明为“first commit”。
 
-5. `git branch -M main`：创建名为main的分支，并切换到该分支。
+5. `git branch -M main`：将本地默认分支重命名为main。
 
 6. `git remote add origin https://github.com/RRRexyz/git-test.git`：连接到一个远程仓库，并命名为origin。
 
@@ -177,7 +177,7 @@ git commit
 ```
 git log
 ```
-可以查看提交历史。
+可以查看提交历史。这个命令会列出所有提交记录，包括提交ID、提交说明、提交时间、提交者、邮箱、提交内容。
 
 如果想回退到之前的版本，可以使用命令
 ```
@@ -192,4 +192,65 @@ git reset --soft commit_id
 使用 `hard` 选项会移动HEAD指针并重置索引和工作区，彻底删除了提交以及暂存区和工作区的修改。通常用于确定需要完全丢弃某些提交和对应更改的情况。
 
 使用 `soft` 选项只会移动HEAD指针，暂存区和工作目录中的更改都会保留在工作目录中，以便再次提交。用于想要保留更改并重新组织提交的情况，或者在分支切换时保持工作目录整洁。
+
+![alt text](image-31.png)
+
+对于回退版本，还有一个命令 
+```
+git revert commit_id
+```
+可以创建一个新的提交，用来撤销指定提交所做的更改。
+
+![alt text](image-32.png)
+
+那如果我们回退到了老版本以后又反悔了，想要再次前进到新版本，却不知道新版本的ID号，该怎么办呢？事实上，Git提供了一个 `git reflog` 命令，可以查看所有的版本更迭记录，包括已经被删除的提交记录。只需要
+```
+git reflog commit_id
+```
+就可以查看我们所有commit的更迭记录。
+
+---
+
+以上讲的都是单线开发的情况，只有一个main分支。如果存在多线开发的话，就需要创建多个分支。
+
+创建分支：
+```
+git branch 分支名
+```
+切换分支：
+```
+git checkout 分支名
+```
+创建并切换分支：
+```
+git checkout -b 分支名      # 相当于前两句命令的合并
+```
+分支重命名：
+```
+git branch -m 旧分支名 新分支名
+```
+将本地默认分支重命名：      
+```
+git branch -M 分支名
+```
+删除本地分支：
+```
+git branch -d 分支名
+```
+查看本地分支：
+```
+git branch
+```
+查看远程分支：
+```
+git branch -r
+```
+查看所有分支：
+```
+git branch -a
+```
+
+
+
+
 

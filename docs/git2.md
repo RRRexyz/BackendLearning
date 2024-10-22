@@ -211,7 +211,7 @@ git revert commit_id
 
 那如果我们回退到了老版本以后又反悔了，想要再次前进到新版本，却不知道新版本的ID号，该怎么办呢？事实上，Git提供了一个 `git reflog` 命令，可以查看所有的版本更迭记录，包括已经被删除的提交记录。只需要
 ```
-git reflog commit_id
+git reflog
 ```
 就可以查看我们所有commit的更迭记录。
 

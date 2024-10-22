@@ -125,6 +125,12 @@ git push
 ````
 刷新GitHub仓库，就可以看到刚才推送的三个文件了。
 
+如果你发现每次push时会要求输入用户名和密码，那么可以使用
+```
+git config --global credential.helper store  
+```
+命令来保存用户名和密码，之后就不需要每次都输入了。
+
 如果要一次性添加大量文件的话，可以用 
 ```
 git add .
@@ -287,6 +293,8 @@ git merge 分支名 --allow-unrelated-histories
 git clone 仓库地址
 ```
 
+#### 使用SSH协议与仓库通信
 
+自行探索😏
 
 

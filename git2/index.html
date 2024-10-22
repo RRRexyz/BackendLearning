@@ -227,6 +227,10 @@ git commit -m &quot;add 3 files&quot;
 <pre><code>git push
 </code></pre>
 <p>刷新GitHub仓库，就可以看到刚才推送的三个文件了。</p>
+<p>如果你发现每次push时会要求输入用户名和密码，那么可以使用</p>
+<pre><code>git config --global credential.helper store  
+</code></pre>
+<p>命令来保存用户名和密码，之后就不需要每次都输入了。</p>
 <p>如果要一次性添加大量文件的话，可以用 </p>
 <pre><code>git add .
 </code></pre>
@@ -338,7 +342,9 @@ temp*
 <hr />
 <p>将GitHub仓库中的内容克隆到本地：</p>
 <pre><code>git clone 仓库地址
-</code></pre></div>
+</code></pre>
+<h4 id="ssh">使用SSH协议与仓库通信</h4>
+<p>自行探索😏</p></div>
             </div>
         </div>
 

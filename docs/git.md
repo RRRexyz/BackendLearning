@@ -1,12 +1,5 @@
 # 1 Git的安装
 
-## 如何检验安装成功
-快捷键Windows（一个窗户图标的键）+ R 输入 cmd 或者 PowerShell 后回车打开命令行窗口，输入以下命令后回车：
-
-    git --version
-
-如果出现类似 git version 2.43.0.windows.1 的输出就（大概）算安装成功。
-
 ## 如何安装 Git
 
 ### Windows系统
@@ -39,6 +32,13 @@
 
 ### 其他系统
 😰我也不会，可以去群里问别的大佬或者自行解决。
+
+## 如何检验安装成功
+快捷键Windows（一个窗户图标的键）+ R 输入 cmd 或者 PowerShell 后回车打开命令行窗口，输入以下命令后回车：
+
+    git --version
+
+如果出现类似 git version 2.43.0.windows.1 的输出就（大概）算安装成功。
 
 # 2 注册一个GitHub 或者Gitee 账号
 

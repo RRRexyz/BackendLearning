@@ -221,9 +221,9 @@ git branch 分支名
 ```
 git checkout 分支名
 ```
-创建并切换分支：
+创建并切换到分支：
 ```
-git checkout -b 分支名      # 相当于前两句命令的合并
+git checkout -b 分支名 
 ```
 分支重命名：
 ```
@@ -236,6 +236,10 @@ git branch -M 分支名
 删除本地分支：
 ```
 git branch -d 分支名
+```
+删除远程分支：
+```
+git push origin --delete 分支名
 ```
 查看本地分支：
 ```
@@ -250,6 +254,38 @@ git branch -r
 git branch -a
 ```
 
+将本地分支的更改推送到一个远程仓库中不存在的新分支（与本地同名），并且设置上游跟踪（upstream tracking），主要用于首次推送本地分支时：
+```
+git push -u origin 分支名 
+```
+
+将远程仓库origin中的分支更改拉取到本地仓库：
+```
+git fetch origin 分支名
+```
+
+创建一个新的本地分支来跟踪远程分支
+```
+git checkout -b 本地分支名 远程分支名
+```
+
+合并分支：
+```
+git merge 分支名   
+# 如果有冲突，需要手动解决冲突
+```
+
+合并两个没有历史关联的分支：
+```
+git merge 分支名 --allow-unrelated-histories
+```
+
+---
+
+将GitHub仓库中的内容克隆到本地：
+```
+git clone 仓库地址
+```
 
 
 

@@ -344,7 +344,23 @@ temp*
 <pre><code>git clone 仓库地址
 </code></pre>
 <h4 id="ssh">使用SSH协议与仓库通信</h4>
-<p>自行探索😏</p></div>
+<p>SSH协议的命令行指令与HTTPS协议的命令行指令基本相同，只是远程仓库的url地址不同。</p>
+<p>但是要想使用SSH协议进行远程推送，需要先配置SSH密钥对。</p>
+<p>首先在终端中运行</p>
+<pre><code>cat ~/.ssh/id_rsa.pub
+</code></pre>
+<p>如果输出信息为没有找到该文件，则说明还没有生成SSH密钥对。</p>
+<p>那么运行</p>
+<pre><code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;
+</code></pre>
+<p>其中 <code>-t</code> 选项指定生成的密钥类型为RSA，<code>-b</code> 选项指定密钥长度为4096，<code>-C</code> 选项指定邮箱地址。</p>
+<p>然后会出现一系列提示，全都保持默认一直回车即可。</p>
+<p>生成完毕后再运行</p>
+<pre><code>cat ~/.ssh/id_rsa.pub
+</code></pre>
+<p>会输出一长串字符，这个就是我们所说的SSH公钥。</p>
+<p>在GitHub中点击个人头像，选择Settings，左边栏选择SSH and GPG keys，右边点击New SSH key按钮，将刚才生成的SSH公钥粘贴到Key中，Title随便填，Key type不用改，然后点击Add SSH key按钮。</p>
+<p>现在我们就可以使用SSH协议进行远程推送了。</p></div>
             </div>
         </div>
 

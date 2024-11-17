@@ -8,5 +8,6 @@ nav:
     - Git的功能和基本操作: git2.md
   - 后端开发: 
     - Python开发环境搭建: python.md
+    - 后端开发简介: backend.md
   - 懂的都懂:
     - 科学上网: ladder.md

@@ -4,27 +4,27 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="None">
         
-        <link rel="canonical" href="https://rrrexyz.github.io/BackendLearning/">
-        <link rel="shortcut icon" href="img/favicon.ico">
-        <title>Backend Learning</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/fontawesome.min.css" rel="stylesheet">
-        <link href="css/brands.min.css" rel="stylesheet">
-        <link href="css/solid.min.css" rel="stylesheet">
-        <link href="css/v4-font-face.min.css" rel="stylesheet">
-        <link href="css/base.css" rel="stylesheet">
+        
+        <link rel="canonical" href="https://rrrexyz.github.io/BackendLearning/crawler/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>爬虫 - Backend Learning</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
         <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atelier-cave-light.min.css" >
         <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
         <script>hljs.highlightAll();</script> 
     </head>
 
-    <body class="homepage">
+    <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href=".">Backend Learning</a>
+                <a class="navbar-brand" href="..">Backend Learning</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -35,35 +35,35 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="nav-item">
-                                <a href="." class="nav-link active" aria-current="page">Home</a>
+                                <a href=".." class="nav-link">Home</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Git入门</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="git/" class="dropdown-item">Git安装与配置</a>
+    <a href="../git/" class="dropdown-item">Git安装与配置</a>
 </li>
                                     
 <li>
-    <a href="git2/" class="dropdown-item">Git的功能和基本操作</a>
+    <a href="../git2/" class="dropdown-item">Git的功能和基本操作</a>
 </li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">后端开发</a>
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">后端开发</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="python/" class="dropdown-item">Python开发环境搭建</a>
+    <a href="../python/" class="dropdown-item">Python开发环境搭建</a>
 </li>
                                     
 <li>
-    <a href="backend/" class="dropdown-item">后端开发简介</a>
+    <a href="../backend/" class="dropdown-item">后端开发简介</a>
 </li>
                                     
 <li>
-    <a href="crawler/" class="dropdown-item">爬虫</a>
+    <a href="./" class="dropdown-item active" aria-current="page">爬虫</a>
 </li>
                                 </ul>
                             </li>
@@ -72,7 +72,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="ladder/" class="dropdown-item">科学上网</a>
+    <a href="../ladder/" class="dropdown-item">科学上网</a>
 </li>
                                 </ul>
                             </li>
@@ -85,12 +85,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" class="nav-link disabled">
+                                <a rel="prev" href="../backend/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="git/" class="nav-link">
+                                <a rel="next" href="../ladder/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -112,17 +112,26 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#_1" class="nav-link">教程目录</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#git" class="nav-link">Git入门</a>
+            <li class="nav-item" data-bs-level="1"><a href="#_1" class="nav-link">爬虫</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#_2" class="nav-link">后端开发</a>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#url" class="nav-link">url</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#user-agent" class="nav-link">User-Agent</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#_3" class="nav-link">懂的都懂</a>
+            <li class="nav-item" data-bs-level="2"><a href="#_2" class="nav-link">认识网页结构</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#requests" class="nav-link">Requests</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#beautiful-soup" class="nav-link">Beautiful Soup</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -133,21 +142,60 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="_1">教程目录</h1>
-<h2 id="git">Git入门</h2>
+<h1 id="_1">爬虫</h1>
+<p>‌爬虫是一种自动化程序，用于从互联网上抓取信息。‌它通过<em>模拟浏览器行为</em>，向网站发送请求，获取资源后分析并提取有用的数据，然后存储起来供后续使用。‌</p>
+<p>爬虫的基本工作流程包括以下几个步骤：首先，通过HTTP协议向目标站点发送请求；接着，等待目标站点的响应并获取响应内容；然后，使用正则表达式或其他解析工具解析获取的内容；最后，将解析后的数据保存到本地或远程服务器中。</p>
+<h1 id="url">url</h1>
+<p>URL（Uniform Resource Locator）是互联网上资源的地址，它由三部分组成：协议、域名、路径。通俗来说就是你在浏览器地址栏输入的网址。</p>
+<p>例如：<a href="https://www.baidu.com/">https://www.baidu.com/</a></p>
+<h2 id="user-agent">User-Agent</h2>
+<p>User-Agent 即用户代理，简称“UA”，它是一个特殊字符串头。网站服务器通过识别 “UA”来确定用户所使用的操作系统版本、CPU 类型、浏览器版本等信息。而网站服务器则通过判断 UA 来给客户端发送不同的页面。</p>
+<p>我们知道，网络爬虫使用程序代码来访问网站，而非人类亲自点击访问，因此爬虫程序也被称为“网络机器人”。绝大多数网站都具备一定的反爬能力，禁止网爬虫大量地访问网站，以免给网站服务器带来压力。User-Agent 就是反爬策略的第一步。</p>
+<p>在发送HTTP请求时，需要在请求头中加入User-Agent字段，其内容通常是浏览器的标识信息，这样网页服务器才会对我们的请求进行响应。</p>
+<p>常见的User-Agent有：</p>
+<ul>
+<li>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0</li>
+</ul>
+<h2 id="_2">认识网页结构</h2>
+<p>网页一般由三部分组成，分别是 HTML（超文本标记语言）、CSS（层叠样式表）和 JScript（活动脚本语言）。</p>
+<p>网页请求的过程分为两个环节：</p>
+<ul>
+<li>
+<p>Request （请求）：每一个展示在用户面前的网页都必须经过这一步，也就是向服务器发送访问请求。</p>
+</li>
+<li>
+<p>Response（响应）：服务器在接收到用户的请求后，会验证请求的有效性，然后向用户（客户端）发送响应的内容，客户端接收服务器响应的内容，将内容展示出来，就是我们所熟悉的网页请求，如图 8 所示。</p>
+</li>
+</ul>
+<p>最常见的两种网络请求：</p>
+<ul>
+<li>
+<p>GET：一般用于获取或者查询资源信息，响应速度快。</p>
+</li>
+<li>
+<p>POST：相比 GET 方式，多了以表单形式上传参数的功能，因此除查询信息外，还可以修改信息。</p>
+</li>
+</ul>
+<h2 id="requests">Requests</h2>
+<p>Requests 是一个 Python 库，是一个为人类设计的简单而优雅的 HTTP 库。我们可以用它来模拟浏览器行为，发送 HTTP 请求，获取响应内容，并分析提取有用的数据。</p>
+<h2 id="beautiful-soup">Beautiful Soup</h2>
+<p>Beautiful Soup 是 Python 库，用于解析 HTML 和 XML 文档并快速提取其中的数据。</p>
 <ol>
-<li><a href="git/">Git安装与配置</a></li>
-<li><a href="git2/">Git的功能和基本操作</a></li>
-</ol>
-<h2 id="_2">后端开发</h2>
-<ol>
-<li><a href="python/">Python开发环境搭建</a></li>
-<li><a href="backend/">后端开发简介</a></li>
-<li><a href="crawler/">爬虫</a></li>
-</ol>
-<h2 id="_3">懂的都懂</h2>
-<ol>
-<li><a href="ladder/">科学上网</a></li>
+<li>
+<p>创建 <code>BeautifulSoup</code> 对象。</p>
+</li>
+<li>
+<p>使用 <code>find()</code> 方法或 <code>find_all()</code> 方法查找标签或标签集合。</p>
+</li>
+<li>
+<p>使用 <code>select()</code> 方法或 <code>select_one()</code> 方法查找 CSS 选择器。</p>
+</li>
+<li>
+<p>使用 <code>get_text()</code> 方法提取标签内的文本。</p>
+</li>
+<li>
+<p>使用 <code>get()</code> 方法提取标签的属性。</p>
+</li>
 </ol></div>
             </div>
         </div>
@@ -156,13 +204,13 @@
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
-        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="../js/bootstrap.bundle.min.js"></script>
         <script>
-            var base_url = ".",
+            var base_url = "..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="js/base.js"></script>
-        <script src="search/main.js"></script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -227,8 +275,3 @@
 
     </body>
 </html>
-
-<!--
-MkDocs version : 1.6.1
-Build Date UTC : 2024-11-24 06:40:12.315482+00:00
--->

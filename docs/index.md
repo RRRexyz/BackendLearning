@@ -7,6 +7,7 @@
 ## 后端开发
 1. [Python开发环境搭建](python.md)
 2. [后端开发简介](backend.md)
+3. [爬虫](crawler.md)
 
 ## 懂的都懂
 1. [科学上网](ladder.md)

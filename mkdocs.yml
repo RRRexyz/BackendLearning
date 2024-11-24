@@ -9,5 +9,6 @@ nav:
   - 后端开发: 
     - Python开发环境搭建: python.md
     - 后端开发简介: backend.md
+    - 爬虫: crawler.md
   - 懂的都懂:
     - 科学上网: ladder.md

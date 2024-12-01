@@ -138,6 +138,42 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-bs-level="2"><a href="#6" class="nav-link">6 请求体</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#7" class="nav-link">7 字符串校验和数值校验</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#8" class="nav-link">8 请求体示例</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#9-cookie" class="nav-link">9 Cookie参数</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#10-header" class="nav-link">10 Header参数</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#11" class="nav-link">11 响应模型</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#12" class="nav-link">12 响应状态码</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#13" class="nav-link">13 表单数据</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#14" class="nav-link">14 请求文件</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -360,7 +396,142 @@
 <p>路径参数在使用的时候需要注意顺序。比如说这边这个例子。</p>
 <p>然后对于路径参数的值，有一个预设值的概念。它是通过Python 内置的Enum类来把路径参数限定为有限个设定好的值。比如说我们有个路径参数叫食堂，那在兴隆山它就只能取“欣园”和“悦园”这两个值，那我们就可以把它作为预设值。</p>
 <p>如果要在路径参数中输入路径，你直接输的话，FastAPI没有办法分辨哪里是请求的路径，哪里是参数的路径，所以要在占位符的地方参数名后面加上:path。</p>
-<h2 id="5">5 查询参数</h2></div>
+<p>路径参数最常见的使用场景就是获取特定对象的信息。</p>
+<pre><code>user_db = [
+    {&quot;id&quot;: 1, &quot;name&quot;: &quot;John&quot;, &quot;phone&quot;: &quot;1234567890&quot;},
+    {&quot;id&quot;: 2, &quot;name&quot;: &quot;Jane&quot;, &quot;phone&quot;: &quot;9876543210&quot;},
+    {&quot;id&quot;: 3, &quot;name&quot;: &quot;Bob&quot;, &quot;phone&quot;: &quot;5555555555&quot;}
+]
+
+
+@app.get(&quot;/users/{user_id}&quot;)
+def get_user(user_id: int):
+    for user in user_db:
+        if user[&quot;id&quot;] == user_id:
+            return user
+</code></pre>
+<p>或者我们还可以把姓名设置为预设值。</p>
+<pre><code>user_db = [
+    {&quot;id&quot;: 1, &quot;name&quot;: &quot;John&quot;, &quot;phone&quot;: &quot;1234567890&quot;},
+    {&quot;id&quot;: 2, &quot;name&quot;: &quot;Jane&quot;, &quot;phone&quot;: &quot;9876543210&quot;},
+    {&quot;id&quot;: 3, &quot;name&quot;: &quot;Bob&quot;, &quot;phone&quot;: &quot;5555555555&quot;}
+]
+
+
+class Username(str, Enum):
+    John = &quot;John&quot;
+    Jane = &quot;Jane&quot;
+    Bob = &quot;Bob&quot;
+
+
+@app.get(&quot;/users/{user_name}&quot;)
+def get_user(user_name: Username):
+    for user in user_db:
+        if user[&quot;name&quot;] == user_name:
+            return user
+</code></pre>
+<h2 id="5">5 查询参数</h2>
+<p>查询参数也是塞进URL里面进行传递，用查询字符串来表示。以<code>?</code>开头像函数的关键字参数一样的形式，多个参数之间用<code>&amp;</code>分隔。</p>
+<p>我们定义的路径操作函数里面，所有不是路径参数的参数，都会被视为查询参数。</p>
+<p>比如说这个例子里面定义了一个get请求，路径是/users，然后函数里面定义了两个参数skip和limit，这两个参数在路径里面都没有，所以它们就是查询参数。我们在API文档里面测试的时候可以看到它的用法和路径参数其实是一样的。只不过是路径参数在请求url里是直接写成路径的一部分，而查询参数是写在<code>?</code>开头的查询字符串后面。</p>
+<p>这里还有一个细节是查询参数可以有默认值，有默认值的查询参数在请求的时候可以不指定，FastAPI会自动使用默认值。比如这里我们给skip和limit设置了默认值，然后在API文档里面你会发现它左边就没有红色的星号和required标识了。然后点击try it out按钮，你会发现skip和limit的默认值都已经填好了。此外默认值也可以是None，如果你不知道默认值该设成什么的话就可以设置成None，但同时要在这个参数的类型注解里面或上None。</p>
+<p>查询参数常用于传递筛选、分类这种请求的参数，例如搜索功能，内容分页等。我们在搜索引擎比如百度当中输入关键词然后搜索，你就会发现网址中就用查询参数的形式包裹了你搜索的内容。</p>
+<pre><code>user_db = [
+    {&quot;id&quot;: 1, &quot;name&quot;: &quot;John&quot;, &quot;phone&quot;: &quot;1234567890&quot;},
+    {&quot;id&quot;: 2, &quot;name&quot;: &quot;Jane&quot;, &quot;phone&quot;: &quot;9876543210&quot;},
+    {&quot;id&quot;: 3, &quot;name&quot;: &quot;Bob&quot;, &quot;phone&quot;: &quot;5555555555&quot;}
+]
+
+
+class Username(str, Enum):
+    John = &quot;John&quot;
+    Jane = &quot;Jane&quot;
+    Bob = &quot;Bob&quot;
+
+
+@app.get(&quot;/users/{user_name}&quot;, description=&quot;Get user by name&quot;)
+def get_user(user_name: Username):
+    for user in user_db:
+        if user[&quot;name&quot;] == user_name:
+            return user
+
+
+@app.get(&quot;/users&quot;, description=&quot;Get all users&quot;)
+def get_all_users(skip: int = 0, limit: int =3):
+    return user_db[skip:skip+limit]
+</code></pre>
+<p>这里我们数据库中有5条数据，但是在一个页面上只能显示得下3条数据，所以我们用skip和limit两个参数来实现分页功能。limit参数指定每页显示的数据量，skip参数指定跳过前面多少条数据，由当前页数乘以limit得到。然后通过列表的切片操作就可以很方便地获取到每一页的内容。</p>
+<p>这里因为我们定义了两个有点相似的路径操作函数，仅凭函数名和参数名可能不太容易区分它们的功能，所以我们可以在装饰器里面添加一个description参数来描述API的详细功能。这里添加的描述信息会在API文档详情中显示。</p>
+<hr />
+<p>路径参数和查询参数一般是在GET和DELETE请求中使用，POST,PUT,PATCHE等请求中也可以使用，但不是很推荐，因为它们一般会传递比较复杂的数据结构，我们通常会使用专门的请求体。</p>
+<hr />
+<h2 id="6">6 请求体</h2>
+<p><em>请求体</em> 是客户端发送给 API 的数据。相对应的是<em>响应体</em> ，它是 API 响应给客户端的数据。</p>
+<p>FastAPI 支持多种请求体类型，包括 JSON、表单、文件等。但是JSON基本上占据90%的使用场景。</p>
+<p>JSON请求体的本质很简单，其实就是把参数以键值对的形式写成JSON，然后发送给服务器。</p>
+<p>而在FastAPI中，我们使用Pydantic来定义请求体。首先需要从Pydantic模块导入BaseModel类。然后自定义一个类继承自BaseModel，然后在类里面以类变量的形式定义请求体的字段。同时附带上类型注解，FastAPI会自动帮我们进行类型检验。当然你可以给某些字段设置默认值。没有默认值的字段必须在请求体中指定，有默认值的字段可以不指定。来看一下这里这个例子。</p>
+<p>在Swagger UI里面会自动按请求体的格式给我们生成一个JSON数据，我们可以对里面的值进行编辑。这里你会发现不管你有没有指定默认值，它都会给你生成一个值。有默认值就生成默认值，没有的话也会自动生成一个。但这只是Swagger UI提供的功能，前端在发送请求的时候如果指定必填的参数，是会报错的。比如这里把name字段删掉然后发送请求，它会给你报错说name字段是必填的，但是删掉具有默认值的description字段就没有事，它会自动把默认值填上去。如果你不按定义好的数据类型来给参数赋值，也会报错。</p>
+<p>当你发送请求后，FastAPI会自动把请求体解析成Pydantic模型对象，然后用你定义的Pydantic模型来接收里面的字段，不存在的字段会被丢弃，也就是说你的请求体里面如果有多余的字段是不会报错的。</p>
+<p>在使用JSON请求体的时候，需要注意的是，不同字段之间用逗号分隔，然后最后一个字段后面不能有逗号，否则Python 将不能把JSON解析成字典，会报错。</p>
+<p>在路径操作函数内部直接访问模型对象的属性。</p>
+<p>后面这些将请求体和路径参数查询参数一起使用的例子就不讲了，因为大家肯定知道怎么用，而且这种用法本身也不是很推荐。</p>
+<h2 id="7">7 字符串校验和数值校验</h2>
+<p>除了指定参数的数据类型外，Pydantic还提供了一些更进一步的校验功能。</p>
+<p>比如说在查询参数里面，我们经常会需要一些字符串参数，但并不希望用户肆意妄为地输入字符串，最直接的就是我们往往需要限制输入的字符串长度。这时候我们可以用Query函数来对字符串的长度进行限制。看这个例子，这里面的用到了typing模块中的Union类来注解一个参数可以为多种类型，但是写起来比较麻烦。实际上在3.10版本及以上Python中，我们可以直接用<code>|</code>来分隔多种类型，这样写会更直观也更方便。我们用Query函数来作为参数的默认值，然后可以通过Query函数的参数来指定各种限制。这个函数有非常多的参数，具体用法大家可以自己去搜。</p>
+<p>然后还有是路径参数的话，我们用Path函数来进行校验，它的用法基本上和Query函数一样。然后这里还提到了一个Annotated类，它可以给参数添加元数据（描述信息、最大值、最小值等等），它可以和Query, Path等函数配合使用，来实现更复杂的校验。这部分内容大家感兴趣的话自己去看文档就可以了。</p>
+<p>Pydantic中还有一个Field类，它是给请求体中的字段添加类似的元数据。</p>
+<h2 id="8">8 请求体示例</h2>
+<p>有时候我们只指定一个请求体中字段的数据类型并不足以表明我们想要接收到什么样的数据，所以我们可以在文档中添加一个示例，让前端更容易知道应该发送什么数据过来。</p>
+<p>声明请求体示例有三种方法。</p>
+<p>第一种是在定义请求体模型的时候，在最后加上一个<code>model_config</code>字段，给他赋上一个固定格式的嵌套字典，最里面的字典键是<code>examples</code>，值是一个列表，里面可以用字典表示一个示例。</p>
+<p>第二种是在定义请求体模型的时候，用<code>Field</code>类来给每个字段添加元examples值，比较麻烦。</p>
+<p>第三种是在定义路径操作函数参数的时候，在类型注解里面用Annotated类来添加一个Body函数的元数据，在这个Body函数里面用<code>examples</code>参数来指定示例。</p>
+<p>我比较喜欢用第一种方法，因为它最为直观。添加的示例在我们测试API的时候也会作为默认值自动给出。</p>
+<h2 id="9-cookie">9 Cookie参数</h2>
+<p>Cookie是我们通过浏览器访问网站时，存储在本地的一些数据，它可以用来保存用户的一些信息，比如说登录状态、购物车信息等。（至于怎么存储怎么读取是前端的事情）。但有的时候要是前端偷懒非要把Cookie发过来让我们后端处理，我们要接收Cookie的话，需要把参数声明为Cookie类型。方法是从fastapi导入Cookie类，然后用Annotated把它作为参数的一个元数据。</p>
+<h2 id="10-header">10 Header参数</h2>
+<p>我们之前讲爬虫的时候提到过，Header参数是在进行HTTP请求的时候，告诉服务器的一些额外信息。这个等大家后面要写项目的时候再去了解就行了，现在只需要知道它的声明方法和Cookie参数类似，也是导入Header类，然后用Annotated来声明。</p>
+<h2 id="11">11 响应模型</h2>
+<p>之前我们讲了请求体是客户端发送给API的数据，而响应体是API响应给客户端的数据。那请求体在定义的时候有请求体模型，所以响应体当然也是有自己的模型的。定义响应体模型的方法也很简单，只要在API的装饰器里面加上一个response_model参数，然后把定义好的Pydantic模型类传进去就可以了。响应模型最主要的作用是把输出的数据限制在模型定义内。这里举了一个传输用户信息的例子。前端通过post请求发送用户信息给后端，后端接收到请求后，把用户信息返回回去，但是显然把密码这样的隐私信息返回回去是不安全的。这时候我们可以定义两个Pydantic模型，一个是接收用户信息的模型，一个是返回用户信息的模型，在返回模型里面把密码字段去掉，然后把这个返回模型作为response_model参数传给API的装饰器。这样即便我们在路径操作函数里面直接return接收到的用户信息，也不会把密码返回回去。响应模型会把不包含在模型中的字段过滤掉。</p>
+<p>除此以外还有一些响应模型相关的装饰器参数。</p>
+<h2 id="12">12 响应状态码</h2>
+<p>我们可以在API的装饰器里面加上一个status_code参数，来指定响应的HTTP状态码。不指定的话，响应成功的时候会默认返回200。如果你有一些其他的需求的话可以手动指定。</p>
+<h2 id="13">13 表单数据</h2>
+<p>有时候我们传输数据的格式不是JSON，而是表单，比如后面大家写用户注册和登录的API的时候，会使用表单字段来传输用户名和密码。要使用表单的话首先要安装<code>python-multipart</code>这个库，然后在从fastapi导入Form函数，把它作为参数的类型注解。这个我们以后学安全性的时候再说。</p>
+<h2 id="14">14 请求文件</h2>
+<p>这个东西比较重要，我们来详细看一下。首先在HTTP协议中文件是以表单的形式上传的，所以首先我们要安装<code>python-multipart</code>这个库。然后我们在路径操作函数里面定义一个参数，类型为bytes，然后用File函数来接收文件。这种方式把文件的所有内容都存储在内存里，适用于小型文件。不过，大部分情况下，UploadFile 更好用。</p>
+<p>UploadFile 参数的声明更为简单，只要从FastAPI导入UploadFile类然后直接把参数类型注解为UploadFile就可以了。UploadFile 有一些属性，最常用的是filename，它可以获取上传文件的名字，然后是file，它可以获取上传文件的IO对象。然后是read方法，它可以读取上传文件的内容。以上这些都是支持异步操作的方法，我们可以用async/await来调用。然后把文件参数作为可选参数这个东西，貌似运行起来会报错，而且一般来说我们也不会有上传空文件这种需求，就不管他了。</p>
+<p>我们还是举个例子来看吧。</p>
+<p>excel文件操作：</p>
+<pre><code>import pandas as pd
+
+df = pd.read_excel('data.xlsx')
+
+print(df)
+
+# 将整个DataFrame转换为一个字典，列名为键，数据列为值
+df_dict = df.to_dict()
+print(df_dict)
+
+# 将每一行转换为一个字典，列名为键，行数据为值
+df_dict = df.to_dict('records')
+print(df_dict)
+
+# 将列转换为字典，列名为键，单个值为值
+df_dict = df.to_dict('list')
+print(df_dict)
+</code></pre>
+<p>API上传文件：</p>
+<pre><code>@app.post(&quot;/uploadfile/&quot;)
+async def create_upload_file(file: UploadFile):
+    if file.filename.endswith(&quot;.xlsx&quot;):
+        data = read_excel(file.file)
+        data_dict = data.to_dict(orient='records')
+        return data_dict
+    else:
+        return {&quot;error&quot;: &quot;File type not supported&quot;}
+</code></pre>
+<p>此外我们可以把文件参数声明为一个列表，里面每个元素都是一个UploadFile对象，这样就可以一次上传多个文件。</p></div>
             </div>
         </div>
 

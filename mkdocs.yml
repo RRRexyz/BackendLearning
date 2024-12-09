@@ -1,0 +1,15 @@
+site_name: Backend Learning
+site_url: "https://rrrexyz.github.io/BackendLearning/"
+theme: minty
+nav:
+  - Home: index.md
+  - Git入门:
+    - Git安装与配置: git.md
+    - Git的功能和基本操作: git2.md
+  - 后端开发: 
+    - Python开发环境搭建: python.md
+    - 后端开发简介: backend.md
+    - 爬虫: crawler.md
+    - FastAPI框架: fastapi.md
+  - 懂的都懂:
+    - 科学上网: ladder.md

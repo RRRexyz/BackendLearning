@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://rrrexyz.github.io/BackendLearning/crawler/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>爬虫 - Backend Learning</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atelier-cave-light.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Backend Learning</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Git入门</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../git/" class="dropdown-item">Git安装与配置</a>
+</li>
+                                    
+<li>
+    <a href="../git2/" class="dropdown-item">Git的功能和基本操作</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">后端开发</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../python/" class="dropdown-item">Python开发环境搭建</a>
+</li>
+                                    
+<li>
+    <a href="../backend/" class="dropdown-item">后端开发简介</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">爬虫</a>
+</li>
+                                    
+<li>
+    <a href="../fastapi/" class="dropdown-item">FastAPI框架</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">懂的都懂</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ladder/" class="dropdown-item">科学上网</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../backend/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../fastapi/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_1" class="nav-link">爬虫</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#url" class="nav-link">url</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#user-agent" class="nav-link">User-Agent</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_2" class="nav-link">认识网页结构</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#requests" class="nav-link">Requests</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#beautiful-soup" class="nav-link">Beautiful Soup</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_3" class="nav-link">作业</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="_1">爬虫</h1>
+<p>‌爬虫是一种自动化程序，用于从互联网上抓取信息。‌它通过<em>模拟浏览器行为</em>，向网站发送请求，获取资源后分析并提取有用的数据，然后存储起来供后续使用。‌</p>
+<p>爬虫的基本工作流程包括以下几个步骤：首先，通过HTTP协议向目标站点发送请求；接着，等待目标站点的响应并获取响应内容；然后，使用正则表达式或其他解析工具解析获取的内容；最后，将解析后的数据保存到本地或远程服务器中。</p>
+<h1 id="url">url</h1>
+<p>URL（Uniform Resource Locator）是互联网上资源的地址，它由三部分组成：协议、域名、路径。通俗来说就是你在浏览器地址栏输入的网址。</p>
+<p>例如：<a href="https://www.baidu.com/">https://www.baidu.com/</a></p>
+<h2 id="user-agent">User-Agent</h2>
+<p>User-Agent 即用户代理，简称“UA”，它是一个特殊字符串头。网站服务器通过识别 “UA”来确定用户所使用的操作系统版本、CPU 类型、浏览器版本等信息。而网站服务器则通过判断 UA 来给客户端发送不同的页面。</p>
+<p>我们知道，网络爬虫使用程序代码来访问网站，而非人类亲自点击访问，因此爬虫程序也被称为“网络机器人”。绝大多数网站都具备一定的反爬能力，禁止网爬虫大量地访问网站，以免给网站服务器带来压力。User-Agent 就是反爬策略的第一步。</p>
+<p>在发送HTTP请求时，需要在请求头中加入User-Agent字段，其内容通常是浏览器的标识信息，这样网页服务器才会对我们的请求进行响应。</p>
+<p>常见的User-Agent有：</p>
+<ul>
+<li>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0</li>
+</ul>
+<h2 id="_2">认识网页结构</h2>
+<p>网页一般由三部分组成，分别是 HTML（超文本标记语言）、CSS（层叠样式表）和 JScript（活动脚本语言）。</p>
+<p>网页请求的过程分为两个环节：</p>
+<ul>
+<li>
+<p>Request （请求）：每一个展示在用户面前的网页都必须经过这一步，也就是向服务器发送访问请求。</p>
+</li>
+<li>
+<p>Response（响应）：服务器在接收到用户的请求后，会验证请求的有效性，然后向用户（客户端）发送响应的内容，客户端接收服务器响应的内容，将内容展示出来，就是我们所熟悉的网页请求，如图 8 所示。</p>
+</li>
+</ul>
+<p>最常见的两种网络请求：</p>
+<ul>
+<li>
+<p>GET：一般用于获取或者查询资源信息，响应速度快。</p>
+</li>
+<li>
+<p>POST：相比 GET 方式，多了以表单形式上传参数的功能，因此除查询信息外，还可以修改信息。</p>
+</li>
+</ul>
+<h2 id="requests">Requests</h2>
+<p>Requests 是一个 Python 库，是一个为人类设计的简单而优雅的 HTTP 库。我们可以用它来模拟浏览器行为，发送 HTTP 请求，获取响应内容，并分析提取有用的数据。</p>
+<h2 id="beautiful-soup">Beautiful Soup</h2>
+<p>Beautiful Soup 是 Python 库，用于解析 HTML 和 XML 文档并快速提取其中的数据。</p>
+<ol>
+<li>
+<p>创建 <code>BeautifulSoup</code> 对象。</p>
+</li>
+<li>
+<p>使用 <code>find()</code> 方法或 <code>find_all()</code> 方法查找标签或标签集合。</p>
+</li>
+<li>
+<p>使用 <code>select()</code> 方法或 <code>select_one()</code> 方法查找 CSS 选择器。</p>
+</li>
+<li>
+<p>使用 <code>get_text()</code> 方法提取标签内的文本。</p>
+</li>
+<li>
+<p>使用 <code>get()</code> 方法提取标签的属性。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_3">作业</h2>
+<h3 id="_4">要求</h3>
+<p>请你写一个爬虫程序，爬取顶点小说上龙王传说的全部章节内容
+网址：https://www.ddyucshu.cc/1_1589/</p>
+<p>提示：</p>
+<p>1.先配置一个虚拟环境安装好需要用到的库。</p>
+<p>2.你需要爬取到每一章节的链接，然后再爬取每一章节的内容。
+点进一个具体章节，你会看到地址栏的url将发生一些变化，比如：
+<a href="https://www.ddyveshu.cc/1_1589/97906157.html">https://www.ddyveshu.cc/1_1589/97906157.html</a>。
+其中97906157就是这一章节的id。
+所以，你需要写一个程序，先爬取首页，找到所有章节的链接，记录下来，然后再分别爬取每一个章节链接后的页面内容。</p>
+<p>3.由于我们要爬取大量章节的内容，因此会频繁地访问网站，因此有可能被网站认定为爬虫而禁止访问。为此我们可以准备一批不同的User-Agent，在爬取不同章节时从里面随机选择一个，这样网站会认为我们是来自不同设备的访问源，从而不会禁止访问。</p>
+<p>User-Agent大全：<a href="https://blog.csdn.net/weixin_69039688/article/details/137566214">https://blog.csdn.net/weixin_69039688/article/details/137566214</a></p>
+<p>3.由于该小说有一千九百八十一章，爬取全部章节将花费大量的时间，因此你可以只爬取一部分章节。</p>
+<h3 id="_5">参考代码</h3>
+<pre><code>import requests
+from bs4 import BeautifulSoup
+import random
+
+headers_list = [
+        {
+            'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Mobile Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android 10; SM-G981B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.162 Mobile Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android 8.0; Pixel 2 Build/OPD3.170816.012) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Mobile Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.109 Safari/537.36 CrKey/1.54.248666'
+        }, {
+            'user-agent': 'Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.188 Safari/537.36 CrKey/1.54.250320'
+        }, {
+            'user-agent': 'Mozilla/5.0 (BB10; Touch) AppleWebKit/537.10+ (KHTML, like Gecko) Version/10.0.9.2372 Mobile Safari/537.10+'
+        }, {
+            'user-agent': 'Mozilla/5.0 (PlayBook; U; RIM Tablet OS 2.1.0; en-US) AppleWebKit/536.2+ (KHTML like Gecko) Version/7.2.1.0 Safari/536.2+'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; U; Android 4.3; en-us; SM-N900T Build/JSS15J) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; U; Android 4.1; en-us; GT-N7100 Build/JRO03C) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; U; Android 4.0; en-us; GT-I9300 Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android 7.0; SM-G950U Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android 8.0.0; SM-G965U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.111 Mobile Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android 8.1.0; SM-T837A) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.80 Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; U; en-us; KFAPWI Build/JDQ39) AppleWebKit/535.19 (KHTML, like Gecko) Silk/3.13 Safari/535.19 Silk-Accelerated=true'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; U; Android 4.4.2; en-us; LGMS323 Build/KOT49I.MS32310c) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/102.0.0.0 Mobile Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Windows Phone 10.0; Android 4.2.1; Microsoft; Lumia 550) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Mobile Safari/537.36 Edge/14.14263'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android 6.0.1; Moto G (4)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Mobile Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 10 Build/MOB31T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android 4.4.2; Nexus 4 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Mobile Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Mobile Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android 8.0.0; Nexus 5X Build/OPR4.170623.006) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Mobile Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android 7.1.1; Nexus 6 Build/N6F26U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Mobile Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android 8.0.0; Nexus 6P Build/OPP3.170518.006) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Mobile Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 7 Build/MOB30X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 520)'
+        }, {
+            'user-agent': 'Mozilla/5.0 (MeeGo; NokiaN9) AppleWebKit/534.13 (KHTML, like Gecko) NokiaBrowser/8.5.0 Mobile Safari/534.13'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android 9; Pixel 3 Build/PQ1A.181105.017.A1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.158 Mobile Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android 10; Pixel 4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Mobile Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android 11; Pixel 3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.181 Mobile Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Mobile Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android 8.0; Pixel 2 Build/OPD3.170816.012) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Mobile Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (Linux; Android 8.0.0; Pixel 2 XL Build/OPD1.170816.004) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Mobile Safari/537.36'
+        }, {
+            'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1'
+        }, {
+            'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1'
+        }, {
+            'user-agent': 'Mozilla/5.0 (iPad; CPU OS 11_0 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) Version/11.0 Mobile/15A5341f Safari/604.1'
+        }
+    ]
+
+def get_novel_chapters() -&gt; list:
+    root_url = &quot;https://www.ddyueshu.com/1_1589/&quot;
+    res = requests.get(root_url, headers=random.choice(headers_list))
+    res.encoding = &quot;gbk&quot;
+    soup = BeautifulSoup(res.text, &quot;html.parser&quot;)
+
+    data = []
+    for dd in soup.find_all(&quot;dd&quot;):
+        link = dd.find(&quot;a&quot;)
+        if not link:
+            continue
+
+        data.append((f&quot;https://www.ddyueshu.com{link['href']}&quot;, link.get_text()))
+    return data
+
+
+def get_chapter_content(url: str) -&gt; str:
+    r = requests.get(url, headers=random.choice(headers_list))
+    r.encoding = 'gbk'
+    soup = BeautifulSoup(r.text, &quot;html.parser&quot;)
+    text = soup.find(&quot;div&quot;, id='content').get_text()
+    text = text.replace(&quot;　　&quot;, &quot;\n\n　　&quot;)
+    return text
+
+
+
+if __name__ == '__main__':
+    novel_chapters = get_novel_chapters()
+
+    for chapter in novel_chapters:
+        url, title = chapter
+        with open(f&quot;{title}.txt&quot;, &quot;w&quot;) as f:
+            f.write(get_chapter_content(url))
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

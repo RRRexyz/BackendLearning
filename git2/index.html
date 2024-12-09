@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://rrrexyz.github.io/BackendLearning/git2/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Git的功能和基本操作 - Backend Learning</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atelier-cave-light.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Backend Learning</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Git入门</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../git/" class="dropdown-item">Git安装与配置</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Git的功能和基本操作</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">后端开发</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../python/" class="dropdown-item">Python开发环境搭建</a>
+</li>
+                                    
+<li>
+    <a href="../backend/" class="dropdown-item">后端开发简介</a>
+</li>
+                                    
+<li>
+    <a href="../crawler/" class="dropdown-item">爬虫</a>
+</li>
+                                    
+<li>
+    <a href="../fastapi/" class="dropdown-item">FastAPI框架</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">懂的都懂</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ladder/" class="dropdown-item">科学上网</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../git/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../python/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#git" class="nav-link">Git的功能与基本操作</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#git_1" class="nav-link">Git的功能</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#git_2" class="nav-link">Git的基本操作</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="git">Git的功能与基本操作</h1>
+<h2 id="git_1">Git的功能</h2>
+<p>Git是一个版本控制软件，主要用于解决在多人合作开发过程中因频繁的版本迭代和代码修改导致的管理混乱问题。它允许开发者轻松地追踪和管理代码的变化，确保每个更改都有明确的记录。与传统的版本管理方式相比，Git提供了更高效和灵活的管理手段，使得团队成员可以并行工作，而不会相互干扰。此外，Git还支持代码还原和版本回溯，使得开发者能够轻松地切换到之前的版本，大大提高了开发效率和代码质量。</p>
+<p>大家现在可能还体会不到这个<em>版本控制</em> 的概念。举个例子让大家感受一下：</p>
+<p>现在你和你的小伙伴决定开发一个项目，因为项目庞大，你们需要分工协作，每个人完成一部分功能，最后汇总到一起。同时由于工作量大，在开发时你可能今天写一点，明天写一点，然后突然有事情搁置了一星期，等有空了再回来继续写。</p>
+<p>那么在这个过程中，就会产生大量的<em>版本</em>。在没有Git的情况下，你只能手动备份，由此产生大量的<em>备份文件</em>，而这些备份文件会占用大量的磁盘空间，并且你不知道各个版本之间的区别，因此难以管理。</p>
+<p>某一天你突然发现你的代码无法正常运行了，或者突然发现当前方案有问题，这时你就需要回退到之前的版本。在没有Git的情况下，你只能手动寻找对应的备份文件，复制相应内容到当前版本。而在Git的帮助下，你只需要一条命令，就可以轻松地回退到之前的版本。</p>
+<h2 id="git_2">Git的基本操作</h2>
+<h3 id="1">1.创建远程仓库</h3>
+<p>首先，我们需要创建一个远程仓库，也就是你项目的云端存储库，一般使用GitHub/Gitee平台。下面都以GitHub为例。</p>
+<p><img alt="alt text" src="../image-28.png" /></p>
+<p>登录GitHub后，左边的仓库预览和右上方头像边上的加号图标，都可以创建新仓库。</p>
+<p><img alt="alt text" src="../image-29.png" /></p>
+<p>输入仓库名称（只能用英文），描述（可选），选择公开或私有，然后点击“Create repository”按钮。</p>
+<p><img alt="alt text" src="../image-30.png" /></p>
+<p>然后会进入上面的界面。这里GitHub已经给出了相关的命令行指令。</p>
+<h3 id="2">2.命令行指令</h3>
+<p>命令行，也被称为命令提示符或终端，是一种可以直接输入文本命令与计算机进行交互的界面。与图形用户界面（GUI）相比，命令行更加强大和灵活，可以执行更复杂的操作。</p>
+<p>对于一句命令行指令来说，一般由三部分组成：命令、选项、参数。</p>
+<ul>
+<li>命令：指定要执行的操作，即做什么。</li>
+<li>选项：附加命令的附加信息，即怎么做。</li>
+<li>参数：命令所需的输入或执行的对象，即对谁做。</li>
+</ul>
+<p>其中选项和参数是可选的，不指定选项则会执行默认选项，也可以选择多个选项，有些命令不需要参数，有些命令则需要多个参数。</p>
+<p>在Windows系统中大大弱化了命令行的地位，但对于高端的程序员来说，命令行依然是不可缺少的工具。</p>
+<p>这里只介绍极度常用的几个通用命令和快捷键。</p>
+<ul>
+<li>cd：切换目录(change directory)。</li>
+</ul>
+<pre><code>cd ..           // 切换到上级目录
+</code></pre>
+<ul>
+<li>clear：清屏。</li>
+</ul>
+<pre><code>clear
+</code></pre>
+<ul>
+<li>Ctrl+C：中断正在运行的程序或者丢弃当前输入。</li>
+<li>方向键↑：输入上一条命令。</li>
+<li>方向键↓：输入下一条命令。</li>
+<li>方向键←：向左移动光标。</li>
+<li>方向键→：向右移动光标。</li>
+<li>回车Enter：执行命令。</li>
+</ul>
+<h3 id="3">3.初始化仓库进行版本管理</h3>
+<p>从上面的图里我们也可以看到，GitHub给出了两种协议来进行仓库的通信。    </p>
+<ul>
+<li>HTTPS协议：使用用户名和密码进行通信，安全性低。配置相对简单。</li>
+<li>SSH协议：使用SSH密钥对进行加密通信，安全性高。配置相对繁琐。</li>
+</ul>
+<h4 id="https">使用HTTPS协议与仓库通信</h4>
+<p>创建一个空的工程文件夹，用VSCode 打开，然后开启终端（快捷键貌似是 <code>Ctrl</code> + <code>`</code>）。</p>
+<p>依次运行（一行一行）GitHub给出的初始化HTTPS协议的命令。</p>
+<pre><code>echo &quot;# git-test&quot; &gt;&gt; README.md  
+git init
+git add README.md
+git commit -m &quot;first commit&quot;
+git branch -M main
+git remote add origin https://github.com/RRRexyz/git-test.git
+git push -u origin main
+</code></pre>
+<p>来拆解一下每一句命令的含义：</p>
+<ol>
+<li>
+<p><code>echo "# git-test" &gt;&gt; README.md</code>：在当前目录下创建一个名为README.md的文件，并在文件开头插入一行内容。</p>
+</li>
+<li>
+<p><code>git init</code>：初始化一个Git仓库。</p>
+</li>
+<li>
+<p><code>git add README.md</code>：将刚才创建的README.md文件添加到暂存区。</p>
+</li>
+<li>
+<p><code>git commit -m "first commit"</code>：将暂存区的改动提交到本地仓库，提交说明为“first commit”。</p>
+</li>
+<li>
+<p><code>git branch -M main</code>：将本地默认分支重命名为main。</p>
+</li>
+<li>
+<p><code>git remote add origin https://github.com/RRRexyz/git-test.git</code>：连接到一个远程仓库，并命名为origin。</p>
+</li>
+<li>
+<p><code>git push -u origin main</code>：将本地仓库的main分支推送到远程仓库。</p>
+</li>
+</ol>
+<p>如果是第一次执行上述操作的话，那么大概率到第4步的时候就会遇到报错，类似于"User name and email must be set before commit."。这是因为HTTP协议中提交代码时需要提供用户名和邮箱以确认提交者的身份。这时需要先设置用户名和邮箱。</p>
+<pre><code>git config --global user.name &quot;your name&quot;
+git config --global user.email &quot;your email&quot;
+</code></pre>
+<p>将双引号中的内容替换为自己的用户名和邮箱然后运行这两条命令即可。其中 <code>--global</code> 选项表示全局设置，表示之后的Git操作都将使用这个用户名和邮箱。如果你想要针对某个仓库单独设置用户名和邮箱，则不需要加 <code>--global</code> 选项。</p>
+<p>执行完上述命令后，我们刷新GitHub仓库，就可以看到刚才推送的README.md文件了。</p>
+<p>现在让我们来添加一些文件：</p>
+<ul>
+<li>index.html</li>
+<li>main.js</li>
+<li>style.css</li>
+</ul>
+<p>我们要把这三个文件添加到暂存区，并提交到本地仓库。</p>
+<pre><code>git add index.html main.js style.css
+git commit -m &quot;add 3 files&quot;
+</code></pre>
+<p>接着我们再推送到远程仓库。这里不用指定分支，会默认推送到当前分支。</p>
+<pre><code>git push
+</code></pre>
+<p>刷新GitHub仓库，就可以看到刚才推送的三个文件了。</p>
+<p>如果你发现每次push时会要求输入用户名和密码，那么可以使用</p>
+<pre><code>git config --global credential.helper store  
+</code></pre>
+<p>命令来保存用户名和密码，之后就不需要每次都输入了。</p>
+<p>如果要一次性添加大量文件的话，可以用 </p>
+<pre><code>git add .
+</code></pre>
+<p>一个 <code>.</code> 表示当前目录下所有文件。</p>
+<p>如果要你误跟踪了不需要跟踪的文件，可以用 </p>
+<pre><code>git rm --cached 文件名
+</code></pre>
+<p>来撤销对这些文件的跟踪。</p>
+<p>如果你要跟踪目录中大部分文件，但又不想跟踪某小部分文件（<strong>注意：这是非常常见的情况，在实际项目中几乎都是这种情况</strong>），此时可以引入 <code>.gitignore</code> 文件，来指定忽略目录下的一些文件。</p>
+<p><code>.gitignore</code> 文件的格式是每行一个匹配模式，匹配模式可以是文件名、目录名、通配符。</p>
+<p><code>.gitignore</code> 文件的格式规则比较复杂，这是只介绍一些常用的格式：</p>
+<pre><code># 一个#加空格表示注释，注释行的内容不会生效
+
+# 忽略某文件，直接写文件名，会忽略所有叫该名字的文件，无论这个文件在哪个文件夹
+intro.txt
+
+# 忽略某一文件夹下的某一文件
+doc/notes.txt
+
+# 忽略所有某一后缀名的文件（一个星号是通配符，可以匹配任意字符）
+*.png
+*.txt
+# 但是某一特定文件为例外，可以用 ! 号取消忽略
+!important.txt
+
+# 忽略某目录及其子目录下的所有文件
+build/
+
+# 忽略所有temp开头的文件和目录
+temp*  
+</code></pre>
+<p>这样，这些文件就不会被跟踪，也不会被提交到仓库。<em>还有更多高级的用法，大家可以自行搜索。</em></p>
+<p>如果在提交时想要输入更详细的提交说明，可以不使用 <code>-m</code> 选项(<code>m</code> 选项代表在命令行中输入提交说明)。直接用</p>
+<pre><code>git commit
+</code></pre>
+<p>此时会在VSCode中打开一个编辑器，可以在其中输入更详细的提交说明。写好以后关闭文件即表示提交完成。</p>
+<p>现在你可以再尝试修改一些文件，然后提交并推送到仓库。</p>
+<p>然后我们就获得了一些不同的版本。使用命令</p>
+<pre><code>git log
+</code></pre>
+<p>可以查看提交历史。这个命令会列出所有提交记录，包括提交ID、提交说明、提交时间、提交者、邮箱、提交内容。</p>
+<p>如果想回退到之前的版本，可以使用命令</p>
+<pre><code>git reset --hard commit_id
+</code></pre>
+<p>或者</p>
+<pre><code>git reset --soft commit_id
+</code></pre>
+<p>其中 <code>commit_id</code> 是你想要回退到的版本的ID。</p>
+<p>使用 <code>hard</code> 选项会移动HEAD指针并重置索引和工作区，彻底删除了提交以及暂存区和工作区的修改。通常用于确定需要完全丢弃某些提交和对应更改的情况。</p>
+<p>使用 <code>soft</code> 选项只会移动HEAD指针，暂存区和工作目录中的更改都会保留在工作目录中，以便再次提交。用于想要保留更改并重新组织提交的情况，或者在分支切换时保持工作目录整洁。</p>
+<p><img alt="alt text" src="../image-31.png" /></p>
+<p>对于回退版本，还有一个命令 </p>
+<pre><code>git revert commit_id
+</code></pre>
+<p>可以创建一个新的提交，用来撤销指定提交所做的更改。</p>
+<p><img alt="alt text" src="../image-32.png" /></p>
+<p>那如果我们回退到了老版本以后又反悔了，想要再次前进到新版本，却不知道新版本的ID号，该怎么办呢？事实上，Git提供了一个 <code>git reflog</code> 命令，可以查看所有的版本更迭记录，包括已经被删除的提交记录。只需要</p>
+<pre><code>git reflog
+</code></pre>
+<p>就可以查看我们所有commit的更迭记录。</p>
+<hr />
+<p>以上讲的都是单线开发的情况，只有一个main分支。如果存在多线开发的话，就需要创建多个分支。</p>
+<p>创建分支：</p>
+<pre><code>git branch 分支名
+</code></pre>
+<p>切换分支：</p>
+<pre><code>git checkout 分支名
+</code></pre>
+<p>创建并切换到分支：</p>
+<pre><code>git checkout -b 分支名 
+</code></pre>
+<p>分支重命名：</p>
+<pre><code>git branch -m 旧分支名 新分支名
+</code></pre>
+<p>将本地默认分支重命名：      </p>
+<pre><code>git branch -M 分支名
+</code></pre>
+<p>删除本地分支：</p>
+<pre><code>git branch -d 分支名
+</code></pre>
+<p>删除远程分支：</p>
+<pre><code>git push origin --delete 分支名
+</code></pre>
+<p>查看本地分支：</p>
+<pre><code>git branch
+</code></pre>
+<p>查看远程分支：</p>
+<pre><code>git branch -r
+</code></pre>
+<p>查看所有分支：</p>
+<pre><code>git branch -a
+</code></pre>
+<p>将本地分支的更改推送到一个远程仓库中不存在的新分支（与本地同名），并且设置上游跟踪（upstream tracking），主要用于首次推送本地分支时：</p>
+<pre><code>git push -u origin 分支名 
+</code></pre>
+<p>将远程仓库origin中的分支更改拉取到本地仓库：</p>
+<pre><code>git fetch origin 分支名
+</code></pre>
+<p>创建一个新的本地分支来跟踪远程分支</p>
+<pre><code>git checkout -b 本地分支名 远程分支名
+</code></pre>
+<p>合并分支：</p>
+<pre><code>git merge 分支名   
+# 如果有冲突，需要手动解决冲突
+</code></pre>
+<p>合并两个没有历史关联的分支：</p>
+<pre><code>git merge 分支名 --allow-unrelated-histories
+</code></pre>
+<hr />
+<p>将GitHub仓库中的内容克隆到本地：</p>
+<pre><code>git clone 仓库地址
+</code></pre>
+<h4 id="ssh">使用SSH协议与仓库通信</h4>
+<p>SSH协议的命令行指令与HTTPS协议的命令行指令基本相同，只是远程仓库的url地址不同。</p>
+<p>但是要想使用SSH协议进行远程推送，需要先配置SSH密钥对。</p>
+<p>首先在终端中运行</p>
+<pre><code>cat ~/.ssh/id_rsa.pub
+</code></pre>
+<p>如果输出信息为没有找到该文件，则说明还没有生成SSH密钥对。</p>
+<p>那么运行</p>
+<pre><code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;
+</code></pre>
+<p>其中 <code>-t</code> 选项指定生成的密钥类型为RSA，<code>-b</code> 选项指定密钥长度为4096，<code>-C</code> 选项指定邮箱地址。</p>
+<p>然后会出现一系列提示，全都保持默认一直回车即可。</p>
+<p>生成完毕后再运行</p>
+<pre><code>cat ~/.ssh/id_rsa.pub
+</code></pre>
+<p>会输出一长串字符，这个就是我们所说的SSH公钥。</p>
+<p>在GitHub中点击个人头像，选择Settings，左边栏选择SSH and GPG keys，右边点击New SSH key按钮，将刚才生成的SSH公钥粘贴到Key中，Title随便填，Key type不用改，然后点击Add SSH key按钮。</p>
+<p>现在我们就可以使用SSH协议进行远程推送了。</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
